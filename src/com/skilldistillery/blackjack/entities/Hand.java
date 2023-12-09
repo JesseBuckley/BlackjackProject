@@ -28,4 +28,9 @@ public abstract class Hand {
 	}
 
 	protected abstract int getDealerHandValue();
+	
+	protected abstract void displayHandDetails();
+	
+	protected abstract void handDetailsOneCardForDealer();
+
 }

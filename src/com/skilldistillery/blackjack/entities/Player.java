@@ -10,6 +10,9 @@ public class Player {
 	public void addCard(Card card) {
 		hand.addCard(card);
 	}
+	public void showPlayerHandDetails() {
+		hand.displayHandDetails();
+	}
 	
 	public boolean isAbleToHit() {
 		boolean allowHit = false;
@@ -34,4 +37,10 @@ public class Player {
 	public void setHand(Hand hand) {
 		this.hand = hand;
 	}
+	
+	@Override
+	public String toString() {
+		return getHand().toString();
+	}
+	
 }
