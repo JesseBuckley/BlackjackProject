@@ -75,6 +75,7 @@ public class BlackjackApplication {
 					break;
 				case "N":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				case "YES":
@@ -82,11 +83,13 @@ public class BlackjackApplication {
 					break;
 				case "NO":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				default:
 					System.err.println(
-							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+							"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+					System.exit(0);
 					break;
 				}
 
@@ -102,6 +105,7 @@ public class BlackjackApplication {
 					break;
 				case "N":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				case "YES":
@@ -109,13 +113,16 @@ public class BlackjackApplication {
 					break;
 				case "NO":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				default:
 					System.err.println(
-							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+							"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+					System.exit(0);
 					break;
 				}
+
 			} else if (dealer.lookAtHand() == 21) {
 				System.out.println("\nDealer Blackjack!! You lose!\n");
 				dealer.showDealerHandDetails();
@@ -129,6 +136,7 @@ public class BlackjackApplication {
 					break;
 				case "N":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				case "YES":
@@ -136,11 +144,13 @@ public class BlackjackApplication {
 					break;
 				case "NO":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				default:
 					System.err.println(
-							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+							"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+					System.exit(0);
 					break;
 				}
 
@@ -168,6 +178,7 @@ public class BlackjackApplication {
 						break;
 					case "N":
 						System.out.println("(Dealer) It was fun playing with you! Good luck!");
+						System.exit(0);
 						break;
 
 					case "YES":
@@ -175,11 +186,13 @@ public class BlackjackApplication {
 						break;
 					case "NO":
 						System.out.println("(Dealer) It was fun playing with you! Good luck!");
+						System.exit(0);
 						break;
 
 					default:
 						System.err.println(
-								"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+								"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+						System.exit(0);
 						break;
 					}
 
@@ -195,6 +208,7 @@ public class BlackjackApplication {
 						break;
 					case "N":
 						System.out.println("(Dealer) It was fun playing with you! Good luck!");
+						System.exit(0);
 						break;
 
 					case "YES":
@@ -202,11 +216,13 @@ public class BlackjackApplication {
 						break;
 					case "NO":
 						System.out.println("(Dealer) It was fun playing with you! Good luck!");
+						System.exit(0);
 						break;
 
 					default:
 						System.err.println(
-								"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+								"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+						System.exit(0);
 						break;
 					}
 				}
@@ -233,6 +249,7 @@ public class BlackjackApplication {
 								break;
 							case "N":
 								System.out.println("(Dealer) It was fun playing with you! Good luck!");
+								System.exit(0);
 								break;
 
 							case "YES":
@@ -240,11 +257,13 @@ public class BlackjackApplication {
 								break;
 							case "NO":
 								System.out.println("(Dealer) It was fun playing with you! Good luck!");
+								System.exit(0);
 								break;
 
 							default:
 								System.err.println(
-										"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+										"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+								System.exit(0);
 								break;
 							}
 						}
@@ -261,6 +280,7 @@ public class BlackjackApplication {
 							break;
 						case "N":
 							System.out.println("(Dealer) It was fun playing with you! Good luck!");
+							System.exit(0);
 							break;
 
 						case "YES":
@@ -268,11 +288,13 @@ public class BlackjackApplication {
 							break;
 						case "NO":
 							System.out.println("(Dealer) It was fun playing with you! Good luck!");
+							System.exit(0);
 							break;
 
 						default:
 							System.err.println(
-									"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+									"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+							System.exit(0);
 							break;
 						}
 					}
@@ -290,7 +312,7 @@ public class BlackjackApplication {
 					if (dealer.lookAtHand() < 17) {
 						System.out.println("\nDealer is forced to hit. " + "(" + dealer.lookAtHand() + ")");
 					}
-					for (int i = 0; dealer.lookAtHand() < 17; i++) {
+					for (; dealer.lookAtHand() < 17;) {
 						System.out.println();
 						dealOneCardToDealer(dealer);
 						System.out.println("The dealer has: " + dealer.lookAtHand() + ".\n");
@@ -329,6 +351,7 @@ public class BlackjackApplication {
 					break;
 				case "N":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				case "YES":
@@ -336,11 +359,13 @@ public class BlackjackApplication {
 					break;
 				case "NO":
 					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					System.exit(0);
 					break;
 
 				default:
 					System.err.println(
-							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+							"(Dealer) Look, I get that this is a game... But still... I need to know if I am dealing you cards or not!");
+					System.exit(0);
 					break;
 				}
 			}
@@ -350,6 +375,7 @@ public class BlackjackApplication {
 	public void playAgain() {
 		gameLogic();
 	}
+	
 
 	public void dealOneCardToPlayer(Player player, Dealer dealer) {
 		for (int p = 0; p < 1; p++) {
@@ -358,6 +384,7 @@ public class BlackjackApplication {
 			System.out.println(playerCards + "new card to Player.\n");
 		}
 	}
+	
 
 	public void dealOneCardToDealer(Dealer dealer) {
 		for (int p = 0; p < 1; p++) {
@@ -366,6 +393,7 @@ public class BlackjackApplication {
 			System.out.println(dealerCards + "new card to Dealer.\n");
 		}
 	}
+	
 
 	public void dealCards(Player player, Dealer dealer) {
 		int count = 0;

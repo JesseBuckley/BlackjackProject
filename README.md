@@ -67,3 +67,15 @@
  
  
 - I would say that my understanding of methods, loops, encapsulation.
+
+
+# Still To Do
+- Add prompt to split when cards are the same rank. Which would give the user two hands to play essentially.
+
+
+
+- Add function to ace with logic to be 1 or 11. And implement dealers Ace related rules.
+
+
+
+- Figure out was how to exit my switch within a Do/While. Because I use a break; to exit my statements. But the switch is within a Do/While loop so it would just break when the player selects no. System.exit() seems like a cheap working solution for now. But I am almost certain there's another way.
