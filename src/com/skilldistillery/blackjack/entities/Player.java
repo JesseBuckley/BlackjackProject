@@ -37,6 +37,14 @@ public class Player {
 		return allowStand;
 	}
 
+	public Hand getHand() {
+		return hand;
+	}
+
+	public void setHand(Hand hand) {
+		this.hand = hand;
+	}
+
 	// the player shows his cards to the dealer and the dealer doesnt show both
 	// until after
 	// the player plays the game.

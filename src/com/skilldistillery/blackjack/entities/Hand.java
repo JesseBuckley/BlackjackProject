@@ -26,4 +26,6 @@ public abstract class Hand {
 	public void setHand(List<Card> hand) {
 		this.hand = hand;
 	}
+
+	protected abstract int getDealerHandValue();
 }

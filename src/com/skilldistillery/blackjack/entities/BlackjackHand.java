@@ -10,6 +10,14 @@ public class BlackjackHand extends Hand{
 		return totalValue;
 	} 
 	
+	public int getDealerHandValue() {
+		if(hand.size() >= 2) {
+			hand.get(1).getValue();
+			return hand.get(1).getValue();
+		} else {
+		return 0;
+		}
+	}
 	
 	public boolean isBlackjack() {
 		//if player or dealer has exactly 21 after the deal it is blackjack

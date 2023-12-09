@@ -21,6 +21,10 @@ public class Dealer extends Player {
 	// total is 17 or above,
 	// the Dealer must Stand (the "rule of 17").
 
+	public int dealerHandValue() {
+		return hand.getDealerHandValue();
+	}
+
 	// after the player is done playing his hand whether he bust or stands or blackj
 	// the dealer will then know if he has to look at his cards at all or not.
 
