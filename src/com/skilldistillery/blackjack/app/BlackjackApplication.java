@@ -20,12 +20,11 @@ public class BlackjackApplication {
 
 	private void mainMenu() {
 		System.out.println(
-				"Welcome to the casino, would you like to sit down and play Blackjack against the dealer? (Y)or(N)");
-		String userInput = sc.nextLine().toUpperCase();
+				"Welcome to the casino, would you like to sit down and play Blackjack with dealer? (Yes) or (No)");
+		String userInput = sc.nextLine().toUpperCase().trim().replaceAll("\\s", "");
 
 		switch (userInput) {
 		case "Y":
-			System.out.println("(Dealer) Welcome! Let's play! I am dealing the cards now...\n");
 			gameLogic();
 			break;
 		case "N":
@@ -33,7 +32,6 @@ public class BlackjackApplication {
 			break;
 
 		case "YES":
-			System.out.println("(Dealer) Welcome! Let's play! I am dealing the cards now...\n");
 			gameLogic();
 			break;
 		case "NO":
@@ -41,7 +39,7 @@ public class BlackjackApplication {
 			break;
 
 		default:
-			System.err.println("Invalid input");
+			System.err.println("(Dealer)Come back when you want to play at my table then!");
 			break;
 		}
 	}
@@ -50,42 +48,103 @@ public class BlackjackApplication {
 		Player player = new Player();
 		Dealer dealer = new Dealer();
 		boolean keepPlaying = true;
+		String playAgain;
 
 		do {
 			dealer.shuffleDeck();
 
+			System.out.println("(Dealer) Let's play! I am dealing the cards now...\n");
+
 			dealCards(player, dealer);
-			
-			System.out.println("\nThe dealer is showing:" + "\n" + dealer.dealerHandValue());
-			System.out.println("\nThe player's cards are:");
+
+			System.out.println("\nThe dealer is showing: " + dealer.dealerHandValue() + ".");
+			System.out.println("\nThe player's hand is:");
 			player.showPlayerHandDetails();
 			System.out.println();
 			System.out.println("\nYou have " + player.lookAtHand() + ".");
-			if (player.lookAtHand() == 21) {
-				System.out.println("\nPlayer Blackjack!! You win!");
-				keepPlaying = false;
-				break;
 
-			} else if (player.lookAtHand() > 21) {
-				System.out.println("Player bust!! You lose!");
-				keepPlaying = false;
-				break;
-
-			} else if (player.lookAtHand() == 21 && dealer.lookAtHand() == 21) {
+			if (player.lookAtHand() == 21 && dealer.lookAtHand() == 21) {
 				System.out.println("Both player, and dealer have Blackjack!! push!");
-				keepPlaying = false;
-				break;
-			}
-			if (dealer.lookAtHand() == 21) {
-				System.out.println("\nDealer Blackjack!! You lose!");
-				keepPlaying = false;
-				break;
 
-			} else if (dealer.lookAtHand() > 21) {
-				System.out.println("Dealer bust!! You win!");
-				keepPlaying = false;
-			}
+				System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
+				playAgain = sc.next().toUpperCase().trim();
 
+				switch (playAgain) {
+				case "Y":
+					playAgain();
+					break;
+				case "N":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				case "YES":
+					playAgain();
+					break;
+				case "NO":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				default:
+					System.err.println(
+							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+					break;
+				}
+
+			} else if (player.lookAtHand() == 21) {
+				System.out.println("\nPlayer Blackjack!! You win!");
+
+				System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
+				playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
+
+				switch (playAgain) {
+				case "Y":
+					playAgain();
+					break;
+				case "N":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				case "YES":
+					playAgain();
+					break;
+				case "NO":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				default:
+					System.err.println(
+							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+					break;
+				}
+			} else if (dealer.lookAtHand() == 21) {
+				System.out.println("\nDealer Blackjack!! You lose!\n");
+				dealer.showDealerHandDetails();
+
+				System.out.println("\n\n(Dealer) Do you want to play again? (Yes) or (No)");
+				playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
+
+				switch (playAgain) {
+				case "Y":
+					playAgain();
+					break;
+				case "N":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				case "YES":
+					playAgain();
+					break;
+				case "NO":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				default:
+					System.err.println(
+							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+					break;
+				}
+
+			}
 			while (player.isAbleToHit() && player.isAbleToStand()) {
 				System.out.println("\n\n-----Choose between one of the options below-----");
 				System.out.println("\n(1) Hit me!");
@@ -95,60 +154,201 @@ public class BlackjackApplication {
 				if (option == 1) {
 					dealOneCardToPlayer(player, dealer);
 					System.out.println("You have " + player.lookAtHand() + ".");
-					if (player.lookAtHand() == 21) {
-						System.out.println("Player wins, Blackjack!!");
-						keepPlaying = false;
+				}
+
+				if (player.lookAtHand() == 21) {
+					System.out.println("Player wins, Blackjack!!");
+
+					System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
+					playAgain = sc.next().toUpperCase().trim();
+
+					switch (playAgain) {
+					case "Y":
+						playAgain();
+						break;
+					case "N":
+						System.out.println("(Dealer) It was fun playing with you! Good luck!");
 						break;
 
-					} else if (player.lookAtHand() > 21) {
-						System.out.println("Player loses, bust!!");
-						keepPlaying = false;
+					case "YES":
+						playAgain();
+						break;
+					case "NO":
+						System.out.println("(Dealer) It was fun playing with you! Good luck!");
+						break;
+
+					default:
+						System.err.println(
+								"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+						break;
+					}
+
+				} else if (player.lookAtHand() > 21) {
+					System.out.println("Player loses, bust!!");
+
+					System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
+					playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
+
+					switch (playAgain) {
+					case "Y":
+						playAgain();
+						break;
+					case "N":
+						System.out.println("(Dealer) It was fun playing with you! Good luck!");
+						break;
+
+					case "YES":
+						playAgain();
+						break;
+					case "NO":
+						System.out.println("(Dealer) It was fun playing with you! Good luck!");
+						break;
+
+					default:
+						System.err.println(
+								"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
 						break;
 					}
 				}
-				if (option == 2) {
-					System.out.println("You decided to stand with an " + player.lookAtHand() + ".");
-					System.out.println("\nThe dealer flips his face down card...\n");
-					dealer.showDealerHandDetails();
-					System.out.println();
-					System.out.println("\nThe dealer has: " + dealer.lookAtHand() + ".\n");
-					if (dealer.lookAtHand() >= 17 && dealer.lookAtHand() <= 21) {
-						System.out.println("The dealer is forced to stand on " + dealer.lookAtHand());
-						keepPlaying = false;
-					}
-					if (dealer.lookAtHand() < 17) {
-						System.out.println("Dealer is forced to hit. " + "(" + dealer.lookAtHand() + ")");
-						for (int hit = 0; dealer.lookAtHand() < 17; hit++) {
-							System.out.println();
-							dealOneCardToDealer(dealer);
-							System.out.println("The dealer has: " + dealer.lookAtHand() + ".\n");
-							dealer.showDealerHandDetails();
+				int hitAgain = 2;
+				do {
+					if (player.isAbleToHit() && option != 2) {
+						System.out.println("\n\n-----Hit again, or Stand?-----");
+						System.out.println("\n(1) Hit me!!!");
+						System.out.println("(2) Stand..");
+						hitAgain = sc.nextInt();
+						if (hitAgain == 1) {
+							dealOneCardToPlayer(player, dealer);
+							System.out.println("You have " + player.lookAtHand() + ".");
 						}
-						System.out.println();
-						if (dealer.lookAtHand() > 21) {
-							System.out.println("Dealer forced to hit and went bust on " + dealer.lookAtHand() + ".");
-							System.out.println("You win!");
-							keepPlaying = false;
+						if (player.lookAtHand() > 21) {
+							System.out.println("Player loses, bust!!");
+
+							System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
+							playAgain = sc.next().toUpperCase().trim();
+
+							switch (playAgain) {
+							case "Y":
+								playAgain();
+								break;
+							case "N":
+								System.out.println("(Dealer) It was fun playing with you! Good luck!");
+								break;
+
+							case "YES":
+								playAgain();
+								break;
+							case "NO":
+								System.out.println("(Dealer) It was fun playing with you! Good luck!");
+								break;
+
+							default:
+								System.err.println(
+										"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+								break;
+							}
+						}
+					}
+					if (player.lookAtHand() == 21) {
+						System.out.println("Player wins, Blackjack!!");
+
+						System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
+						playAgain = sc.next().toUpperCase().trim();
+
+						switch (playAgain) {
+						case "Y":
+							playAgain();
+							break;
+						case "N":
+							System.out.println("(Dealer) It was fun playing with you! Good luck!");
+							break;
+
+						case "YES":
+							playAgain();
+							break;
+						case "NO":
+							System.out.println("(Dealer) It was fun playing with you! Good luck!");
+							break;
+
+						default:
+							System.err.println(
+									"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
 							break;
 						}
-						if (dealer.lookAtHand() < 21 && dealer.lookAtHand() >= 17) {
-							System.out.println("Dealer stands at " + dealer.lookAtHand());
-						}
 					}
-					if (player.lookAtHand() > dealer.lookAtHand()) {
-						System.out.println("You win");
-						keepPlaying = false;
-						break;
+				} while (hitAgain != 2);
 
-					} else if (player.lookAtHand() < dealer.lookAtHand()) {
-						System.out.println("You lose");
-						keepPlaying = false;
-						break;
+				if (hitAgain == 2 || option == 2) {
+					System.out.println("You decided to stand with an " + player.lookAtHand() + ".");
+					System.out.println("\nThe dealer flips his face down card...");
+					dealer.showDealerHandDetails();
+					System.out.println();
+
+					if (dealer.lookAtHand() >= 17 && dealer.lookAtHand() <= 21) {
+						System.out.println("\nThe dealer is forced to stand on " + dealer.lookAtHand());
 					}
+					if (dealer.lookAtHand() < 17) {
+						System.out.println("\nDealer is forced to hit. " + "(" + dealer.lookAtHand() + ")");
+					}
+					for (int i = 0; dealer.lookAtHand() < 17; i++) {
+						System.out.println();
+						dealOneCardToDealer(dealer);
+						System.out.println("The dealer has: " + dealer.lookAtHand() + ".\n");
+						dealer.showDealerHandDetails();
+					}
+
+					System.out.println();
+					if (dealer.lookAtHand() > 21) {
+						System.out.println("\nDealer forced to hit and went bust on " + dealer.lookAtHand() + ".\n");
+						System.out.println("You won!");
+					}
+					if (dealer.lookAtHand() < 21 && dealer.lookAtHand() >= 17) {
+						System.out.println("Dealer stands at " + dealer.lookAtHand());
+					}
+					if (dealer.lookAtHand() == 21) {
+						System.out.println("Dealer blackjack!");
+						System.out.println("You lost!");
+					}
+				}
+				if (player.lookAtHand() > dealer.lookAtHand()) {
+					System.out.println("\nYou win!");
+
+				} else if (player.lookAtHand() < dealer.lookAtHand() && dealer.lookAtHand() <= 21) {
+					System.out.println("\nYou lose!");
+
+				} else if (player.lookAtHand() == dealer.lookAtHand()) {
+					System.out.println("\nPush!! Neither player or dealer wins!");
+				}
+
+				System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
+				playAgain = sc.next().toUpperCase().trim();
+
+				switch (playAgain) {
+				case "Y":
+					playAgain();
+					break;
+				case "N":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				case "YES":
+					playAgain();
+					break;
+				case "NO":
+					System.out.println("(Dealer) It was fun playing with you! Good luck!");
+					break;
+
+				default:
+					System.err.println(
+							"(Dealer) Look, I get that this is a game... But still... Come back when you're ready!");
+					break;
 				}
 			}
 		} while (keepPlaying == true);
+	}
 
+	public void playAgain() {
+		gameLogic();
 	}
 
 	public void dealOneCardToPlayer(Player player, Dealer dealer) {
@@ -170,7 +370,7 @@ public class BlackjackApplication {
 	public void dealCards(Player player, Dealer dealer) {
 		int count = 0;
 		do {
-		for (int p = 0; p < 1; p++) {
+			for (int p = 0; p < 1; p++) {
 
 				Card playerCards = dealer.dealCard();
 				player.addCard(playerCards);
@@ -188,6 +388,6 @@ public class BlackjackApplication {
 				}
 				count++;
 			}
-		}while(count <= 1);
+		} while (count <= 1);
 	}
 }

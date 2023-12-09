@@ -7,19 +7,23 @@
 - You will go through prompts to try and best the dealer in a game of 21.
 
 # How To Run
-- Run BlackjackApplication, you will be prompted to enter Y(es) or N(o) (not case sensitive) to sit down and play a round of Blackjack against the dealer. 
+- Run BlackjackApplication; you will be prompted to enter Y(es) or N(o) (not case sensitive) to sit down and play a round of Blackjack against the dealer. 
 
 
-- If you select Y(es), the dealer will deal you, the player two cards as well as themselves.
+- If you select Y(es), the dealer will deal you, the player, two cards as well as themselves.
 
 
-- Depending on the way the cards end up dealt. You could find yourself seeing any sort of these outcomes, which correlate to Blackjack's rules:
+- Depending on the way the cards end up dealt. You could find yourself seeing any sort of these outcomes that correlate to Blackjack's rules:
 - Hit
 - Stand
 - Bust 
 - Blackjack
 
-- The dealer also shares similar functions however, the logic is automated based on the rules of Blackjack.
+
+- The dealer shares similar functions however, the logic is automated based on the rules of Blackjack.
+
+
+- One you win, lose, or push. You will be given the option to play again.
 
 
 # Technologies Used
