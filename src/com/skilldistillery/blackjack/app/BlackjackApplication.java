@@ -15,10 +15,7 @@ public class BlackjackApplication {
 	}
 
 	public void runGame() {
-		
 		mainMenu();
-
-		// dealer.cardsLeft();
 	}
 
 	private void mainMenu() {
@@ -28,14 +25,16 @@ public class BlackjackApplication {
 
 		switch (userInput) {
 		case "Y":
-			displayMenu();
+			System.out.println("(Dealer) Welcome! Let's play! I am dealing the cards now...\n");
+			gameLogic();
 			break;
 		case "N":
 			System.out.println("Maybe later then, good luck!");
 			break;
 
 		case "YES":
-			displayMenu();
+			System.out.println("(Dealer) Welcome! Let's play! I am dealing the cards now...\n");
+			gameLogic();
 			break;
 		case "NO":
 			System.out.println("Maybe later then, good luck!");
@@ -47,16 +46,84 @@ public class BlackjackApplication {
 		}
 	}
 
-	public void displayMenu() {
+	public void gameLogic() {
 		Player player = new Player();
 		Dealer dealer = new Dealer();
-		
-		dealer.shuffleDeck();
-		
-		System.out.println("(Dealer) Welcome! Let's play! I am dealing the cards now...\n");
-		dealCards(player, dealer);
-		
-		System.out.println("\n\nThe dealer is showing: " + dealer.dealerHandValue() + "\n\nYou are showing: " + player.lookAtHand());
+		boolean keepPlaying = true;
+
+		do {
+			dealer.shuffleDeck();
+
+			dealCards(player, dealer);
+
+			System.out.println("\n\nThe dealer is showing: " + dealer.dealerHandValue() + "\n\nYou are showing: "
+					+ player.lookAtHand());
+
+			if (player.lookAtHand() == 21) {
+				System.out.println("player black jack!!");
+				keepPlaying = false;
+
+			} else if (player.lookAtHand() > 21) {
+				System.out.println("player bust!!");
+				keepPlaying = false;
+
+			} else if (player.lookAtHand() == 21 && dealer.lookAtHand() == 21) {
+				System.out.println("Both player and dealer have blackjack push!");
+				keepPlaying = false;
+			}
+			if (dealer.lookAtHand() == 21) {
+				System.out.println("dealer black jack!!");
+				keepPlaying = false;
+
+			} else if (dealer.lookAtHand() > 21) {
+				System.out.println("dealer bust!!");
+				keepPlaying = false;
+			}
+
+			while (player.isAbleToHit() && player.isAbleToStand()) {
+
+				System.out.println("\n(1) Hit me!");
+				System.out.println("(2) Stand");
+				int option = sc.nextInt();
+
+				if (option == 1) {
+					dealCardToPlayer(player, dealer);
+					if (player.lookAtHand() == 21) {
+						System.out.println("player black jack!!");
+						keepPlaying = false;
+						break;
+
+					} else if (player.lookAtHand() > 21) {
+						System.out.println("player bust!!");
+						keepPlaying = false;
+						break;
+					}
+				}
+				if (option == 2) {
+					System.out.println("You decided to stand");
+					System.out.println("\nThe dealer has: " + dealer.lookAtHand());
+					if (player.lookAtHand() > dealer.lookAtHand()) {
+						System.out.println("you win");
+						keepPlaying = false;
+						break;
+						
+					} else if (player.lookAtHand() < dealer.lookAtHand()) {
+						System.out.println("you lose");
+						keepPlaying = false;
+						break;
+					}
+				}
+			}
+		} while (keepPlaying == true);
+
+	}
+
+	public void dealCardToPlayer(Player player, Dealer dealer) {
+		for (int p = 0; p < 1; p++) {
+			Card playerCards = dealer.dealCard();
+			player.addCard(playerCards);
+			System.out.println(playerCards + " new card to Player.\n");
+		}
 	}
 
 	public void dealCards(Player player, Dealer dealer) {
@@ -67,21 +134,15 @@ public class BlackjackApplication {
 			if (d == 0) {
 				System.out.println("Dealer's face down card");
 			} else if (d == 1) {
-				System.out.println(dealerCards + " dealer card");
+				System.out.println(dealerCards + " to Dealer.");
 			}
 			for (int p = 0; p < 1; p++) {
 				Card playerCards = dealer.dealCard();
 				player.addCard(playerCards);
-				System.out.println(playerCards + " player card");
+				System.out.println(playerCards + " to Player.");
 
 			}
 		}
-	}
-	public void dealerHandBeforeFlip() {
-		
-	}
-	public void playerDecisions() {
-		System.out.println();
 	}
 }
 // The Dealer decides to Hit or Stand based on the rules of Blackjack:
