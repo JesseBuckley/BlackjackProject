@@ -308,7 +308,7 @@ public class BlackjackApplication {
 						System.out.println("Player wins, Blackjack!!");
 
 						System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
-						playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
+						playAgain = sc.next().toUpperCase().trim();
 
 						switch (playAgain) {
 						case "Y":
@@ -395,7 +395,7 @@ public class BlackjackApplication {
 				}
 
 				System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
-				playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
+				playAgain = sc.next().toUpperCase().trim();
 
 				switch (playAgain) {
 				case "Y":
