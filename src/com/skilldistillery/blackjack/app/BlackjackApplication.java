@@ -384,7 +384,6 @@ public class BlackjackApplication {
 					System.out.println("\nThe player's hand is: " + "(" + player.lookAtHand() + ")");
 					player.showPlayerHandDetails();
 					System.out.println();
-
 					System.out.println("\nYou lose!");
 
 				} else if (player.lookAtHand() == dealer.lookAtHand()) {

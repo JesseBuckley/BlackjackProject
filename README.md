@@ -55,11 +55,6 @@
 - It could be inferred that I should spam do/while loops a bit less. Why I find them to be the only way I do not know. I definitely tried to nest them 3 deep but I ended up doing something slightly less painful. 
 
 
-
-- I do think that I would need a triple nested for loop to make the game play with more decks though. I can't think of a different way.
-
-
-
 - I forced myself to use a switch for the first time in a homework so far. It's literally the same as an if/else-if so that makes it seem much simpler to me.
 
 
