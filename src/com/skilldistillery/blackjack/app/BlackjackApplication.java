@@ -21,7 +21,7 @@ public class BlackjackApplication {
 	private void mainMenu() {
 		System.out.println(
 				"Welcome to the casino, would you like to sit down and play Blackjack with dealer? (Yes) or (No)");
-		String userInput = sc.nextLine().toUpperCase().trim().replaceAll("\\s", "");
+		String userInput = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
 		switch (userInput) {
 		case "Y":
@@ -68,16 +68,16 @@ public class BlackjackApplication {
 				player.showPlayerHandDetails();
 				System.out.println();
 				System.out.println("\nYou have " + player.lookAtHand() + ".");
-				
+
 				System.out.println("\nThe dealer's hand is:");
 				dealer.showDealerHandDetails();
 				System.out.println();
 				System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-				
+
 				System.out.println("Both player, and dealer have Blackjack!! Push!");
 
 				System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
-				playAgain = sc.next().toUpperCase().trim();
+				playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
 				switch (playAgain) {
 				case "Y":
@@ -108,14 +108,14 @@ public class BlackjackApplication {
 				player.showPlayerHandDetails();
 				System.out.println();
 				System.out.println("\nYou have " + player.lookAtHand() + ".");
-				
+
 				System.out.println("\nThe dealer's hand is:");
 				dealer.showDealerHandDetails();
 				System.out.println();
 				System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-				
+
 				System.out.println("\nPlayer Blackjack!! You win!");
-				
+
 				System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
 				playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
@@ -148,14 +148,14 @@ public class BlackjackApplication {
 				player.showPlayerHandDetails();
 				System.out.println();
 				System.out.println("\nYou have " + player.lookAtHand() + ".");
-				
+
 				System.out.println("\nThe dealer's hand is:");
 				dealer.showDealerHandDetails();
 				System.out.println();
-				System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");	
-				
+				System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
+
 				System.out.println("\nDealer Blackjack!! You lose!\n");
-				
+
 				System.out.println("\n\n(Dealer) Do you want to play again? (Yes) or (No)");
 				playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
@@ -196,24 +196,18 @@ public class BlackjackApplication {
 					player.showPlayerHandDetails();
 					System.out.println();
 					System.out.println("\nYou have " + player.lookAtHand() + ".");
-					
 				}
 
 				if (player.lookAtHand() == 21) {
-					System.out.println("\nThe player's hand is:");
-					player.showPlayerHandDetails();
-					System.out.println();
-					System.out.println("\nYou have " + player.lookAtHand() + ".");
-					
 					System.out.println("\nThe dealer's hand is:");
 					dealer.showDealerHandDetails();
 					System.out.println();
 					System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-					
+
 					System.out.println("Player wins, Blackjack!!");
-				
+
 					System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
-					playAgain = sc.next().toUpperCase().trim();
+					playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
 					switch (playAgain) {
 					case "Y":
@@ -240,18 +234,14 @@ public class BlackjackApplication {
 					}
 
 				} else if (player.lookAtHand() > 21) {
-					System.out.println("\nThe player's hand is:");
-					player.showPlayerHandDetails();
-					System.out.println();
-					System.out.println("\nYou have " + player.lookAtHand() + ".");
-					
+
 					System.out.println("\nThe dealer's hand is:");
 					dealer.showDealerHandDetails();
 					System.out.println();
 					System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-					
+
 					System.out.println("Player loses, bust!!");
-					
+
 					System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
 					playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
@@ -291,22 +281,19 @@ public class BlackjackApplication {
 							System.out.println("You have " + player.lookAtHand() + ".");
 							System.out.println("\nPlayer hand: ");
 							player.showPlayerHandDetails();
+							System.out.println();
 						}
 						if (player.lookAtHand() > 21) {
-							System.out.println("\nThe player's hand is:");
-							player.showPlayerHandDetails();
-							System.out.println();
-							System.out.println("\nYou have " + player.lookAtHand() + ".");
-							
+
 							System.out.println("\nThe dealer's hand is:");
 							dealer.showDealerHandDetails();
 							System.out.println();
 							System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-							
+
 							System.out.println("Player loses, bust!!");
-							
+
 							System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
-							playAgain = sc.next().toUpperCase().trim();
+							playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
 							switch (playAgain) {
 							case "Y":
@@ -334,20 +321,16 @@ public class BlackjackApplication {
 						}
 					}
 					if (player.lookAtHand() == 21) {
-						System.out.println("\nThe player's hand is:");
-						player.showPlayerHandDetails();
-						System.out.println();
-						System.out.println("\nYou have " + player.lookAtHand() + ".");
-						
+
 						System.out.println("\nThe dealer's hand is:");
 						dealer.showDealerHandDetails();
 						System.out.println();
 						System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-						
+
 						System.out.println("Player wins, Blackjack!!");
-						
+
 						System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
-						playAgain = sc.next().toUpperCase().trim();
+						playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
 						switch (playAgain) {
 						case "Y":
@@ -381,13 +364,12 @@ public class BlackjackApplication {
 					System.out.println("\nThe dealer's hand is:");
 					dealer.showDealerHandDetails();
 					System.out.println();
-					System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
 
 					if (dealer.lookAtHand() >= 17 && dealer.lookAtHand() <= 21) {
-						System.out.println("\nThe dealer is forced to stand on " + dealer.lookAtHand());
+						System.out.println("The dealer is forced to stand on " + "(" + dealer.lookAtHand() + ")");
 					}
 					if (dealer.lookAtHand() < 17) {
-						System.out.println("\nDealer is forced to hit. " + "(" + dealer.lookAtHand() + ")");
+						System.out.println("Dealer is forced to hit. " + "(" + dealer.lookAtHand() + ")");
 					}
 					for (; dealer.lookAtHand() < 17;) {
 						System.out.println();
@@ -400,17 +382,17 @@ public class BlackjackApplication {
 
 					System.out.println();
 					if (dealer.lookAtHand() > 21) {
-						System.out.println("\nDealer forced to hit and went bust on " + dealer.lookAtHand() + ".\n");
+						System.out.println("Dealer forced to hit and went bust on " + "(" + dealer.lookAtHand() + ")");
 						System.out.println("\nThe player's hand is:");
 						player.showPlayerHandDetails();
 						System.out.println();
 						System.out.println("\nYou have " + player.lookAtHand() + ".");
-						
+
 						System.out.println("\nThe dealer's hand is:");
 						dealer.showDealerHandDetails();
 						System.out.println();
 						System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-						
+
 						System.out.println("You won!");
 					}
 					if (dealer.lookAtHand() < 21 && dealer.lookAtHand() >= 17) {
@@ -421,12 +403,7 @@ public class BlackjackApplication {
 						player.showPlayerHandDetails();
 						System.out.println();
 						System.out.println("\nYou have " + player.lookAtHand() + ".");
-						
-						System.out.println("\nThe dealer's hand is:");
-						dealer.showDealerHandDetails();
-						System.out.println();
-						System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-						
+
 						System.out.println("Dealer blackjack!");
 						System.out.println("You lost!");
 					}
@@ -436,43 +413,28 @@ public class BlackjackApplication {
 					player.showPlayerHandDetails();
 					System.out.println();
 					System.out.println("\nYou have " + player.lookAtHand() + ".");
-					
-					System.out.println("\nThe dealer's hand is:");
-					dealer.showDealerHandDetails();
-					System.out.println();
-					System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
 
 					System.out.println("\nYou win!");
-					
+
 				} else if (player.lookAtHand() < dealer.lookAtHand() && dealer.lookAtHand() <= 21) {
 					System.out.println("\nThe player's hand is:");
 					player.showPlayerHandDetails();
 					System.out.println();
 					System.out.println("\nYou have " + player.lookAtHand() + ".");
-					
-					System.out.println("\nThe dealer's hand is:");
-					dealer.showDealerHandDetails();
-					System.out.println();
-					System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-					
+
 					System.out.println("\nYou lose!");
-					
+
 				} else if (player.lookAtHand() == dealer.lookAtHand()) {
 					System.out.println("\nThe player's hand is:");
 					player.showPlayerHandDetails();
 					System.out.println();
 					System.out.println("\nYou have " + player.lookAtHand() + ".");
-					
-					System.out.println("\nThe dealer's hand is:");
-					dealer.showDealerHandDetails();
-					System.out.println();
-					System.out.println("\nThe Dealer has " + dealer.lookAtHand() + ".\n");
-					
+
 					System.out.println("\nPush!! Neither player or dealer wins!");
 				}
 
 				System.out.println("\n(Dealer) Do you want to play again? (Yes) or (No)");
-				playAgain = sc.next().toUpperCase().trim();
+				playAgain = sc.next().toUpperCase().trim().replaceAll("\\s", "");
 
 				switch (playAgain) {
 				case "Y":
@@ -504,7 +466,6 @@ public class BlackjackApplication {
 	public void playAgain() {
 		gameLogic();
 	}
-	
 
 	public void dealOneCardToPlayer(Player player, Dealer dealer) {
 		for (int p = 0; p < 1; p++) {
@@ -513,7 +474,6 @@ public class BlackjackApplication {
 			System.out.println(playerCards + "new card to Player.\n");
 		}
 	}
-	
 
 	public void dealOneCardToDealer(Dealer dealer) {
 		for (int p = 0; p < 1; p++) {
@@ -522,7 +482,6 @@ public class BlackjackApplication {
 			System.out.println(dealerCards + "new card to Dealer.\n");
 		}
 	}
-	
 
 	public void dealCards(Player player, Dealer dealer) {
 		int count = 0;
